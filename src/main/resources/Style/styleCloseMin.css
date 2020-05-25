@@ -1,0 +1,13 @@
+.button:hover{     
+  
+  -fx-cursor:hand;
+}
+
+.button:pressed
+{
+  -fx-cursor: hand;
+}
+
+
+
+
