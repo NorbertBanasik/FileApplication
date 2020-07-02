@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="800.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fileapp.controller.HelpController">
+   <children>
+      <AnchorPane layoutX="-2.0" layoutY="-19.0" prefHeight="463.0" prefWidth="400.0" style="-fx-background-color: #1737D2;">
+         <children>
+            <ImageView fitHeight="110.0" fitWidth="112.0" layoutX="144.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="148.6329803466797">
+               <image>
+                  <Image url="@../Grafiki/output-onlinepngtools.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="117.0" layoutY="265.0" text="Chroń swoje pliki" textFill="WHITE">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="156.0" layoutY="299.0" text="Łatwo. I szybko." textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="398.0" layoutY="28.0" prefHeight="389.0" prefWidth="402.0" style="-fx-background-color: #fff;">
+         <children>
+            <Label layoutX="79.0" layoutY="42.0" text="Aplikacja do szyfrowania plików" textFill="#1737d2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnMinStart" layoutX="342.0" layoutY="13.0" mnemonicParsing="false" onAction="#onActionMinimize" style="-fx-background-color: transparent;" stylesheets="@../Style/styleCloseMin.css">
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Grafiki/minimize.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="163.0" layoutY="71.0" text="Norbert Banasik" />
+            <TextArea fx:id="poradnik" layoutX="21.0" layoutY="96.0" prefHeight="281.0" prefWidth="375.0" stylesheets="@../Style/tekst.css" text="                             Poradnik używania aplikacji&#10;Aplikacja szyfruje pliki z rozszerzeniem .txt. Aby zaszyfrować dany &#10;plik należy wybrać go za pomocą przycisku &quot;Wybierz plik&quot;. Zwróć &#10;uwagę czy aby na pewno wybrana jest opcja &quot;Zaszyfruj&quot;. &#10;W następnym oknie wpisujemy hasło, którym chcemy chronić &#10;dokument. Po zaszyfrowaniu pliku, pojawia nam się nowy doku-&#10;ment o tej samej nazwie z rozszerzeniem .crypt. Oryginalny plik&#10;można juz bezpiecznie usunąć. Aby odszyfrować plik wybieramy&#10;zaszyfrowany dokument, zmieniamy opcję na &quot;Odszyfruj&quot;, a&#10;następnie wpisujemy hasło podane podczas procesu szyfrowania.&#10;W lokalizacji zaszyfrowanego pliku powinien nam się pojawić &#10;oryginalny dokument. Jeśli podane hasło będzie błędne, powstanie&#10;pusty plik .txt.&#10;&#10;" />
+            <Button fx:id="btnPowrot" layoutX="152.0" layoutY="335.0" mnemonicParsing="false" onAction="#onPowrot" prefHeight="17.0" prefWidth="107.0" stylesheets="@../Style/style.css" text="Wróć" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="btnCloseStart" layoutX="763.0" layoutY="37.0" mnemonicParsing="false" onAction="#onActionCloseStart" style="-fx-background-color: transparent;" stylesheets="@../Style/styleCloseMin.css">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Grafiki/icons8_multiply_26px_1.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

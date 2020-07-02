@@ -15,7 +15,7 @@
    <children>
       <AnchorPane layoutX="-1.0" layoutY="28.0" prefHeight="389.0" prefWidth="801.0" style="-fx-background-color: #fff; -fx-border-radius: 5em;">
          <children>
-            <HBox layoutX="74.0" layoutY="132.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-bottom-color: black; -fx-border-style: hidden hidden solid hidden;" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="76.0">
+            <HBox fx:id="passw1" layoutX="74.0" layoutY="132.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-bottom-color: black; -fx-border-style: hidden hidden solid hidden;" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="76.0">
                <children>
                   <PasswordField fx:id="pass1" prefHeight="46.0" prefWidth="253.0" promptText="wpisz hasło" style="-fx-background-color: transparent; -fx-prompt-text-fill: #dedede; -fx-text-fill: black;">
                      <HBox.margin>
@@ -31,7 +31,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox layoutX="99.0" layoutY="194.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-style: hidden hidden solid hidden;" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="75.0">
+            <HBox fx:id="passw2" layoutX="99.0" layoutY="194.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-style: hidden hidden solid hidden;" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="75.0">
                <children>
                   <PasswordField fx:id="pass2" prefHeight="45.0" prefWidth="255.0" promptText="potwierdź hasło" style="-fx-background-color: transparent; -fx-prompt-text-fill: #dedede; -fx-text-fill: black;">
                      <HBox.margin>
@@ -72,6 +72,17 @@
                </graphic>
             </Button>
             <Button fx:id="nowy" layoutX="583.0" layoutY="279.0" mnemonicParsing="false" onAction="#onActionNowy" stylesheets="@../Style/style.css" text="Nowy plik" />
+            <ImageView fx:id="imgs" fitHeight="121.0" fitWidth="107.0" layoutX="556.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Grafiki/5aa78e207603fc558cffbf19.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="labelod" layoutX="520.0" layoutY="215.0" style="-fx-background-color: transparent;" text="Plik pomyślnie odszyfrowany!" textFill="#467c46">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnNewFileD" layoutX="560.0" layoutY="279.0" mnemonicParsing="false" onAction="#onActionNew" style="-fx-border-color: #1737D2;" stylesheets="@../Style/style.css" text="Wybierz nowy plik" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="-2.0" layoutY="-19.0" prefHeight="463.0" prefWidth="400.0" style="-fx-background-color: #1737D2;">

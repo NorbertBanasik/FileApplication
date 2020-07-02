@@ -10,9 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -74,6 +72,9 @@ public class StartController {
     private TextField podgladPliku1;
 
     @FXML
+    private TextArea poradnik;
+
+    @FXML
     private Button btnWybierz;
 
     @FXML
@@ -86,14 +87,28 @@ public class StartController {
     private Button btnStart;
 
     @FXML
+    private Button btnPowrot;
+
+    @FXML
     private TextField komunikat;
+
+    @FXML
+    private Button pomocbtn;
+
+    @FXML
+    private Label tekstChron;
+
+    @FXML
+    private Label tekstSciezka;
+
+    @FXML
+    private Label tekstAp;
 
     @FXML
     private Button btnDecryptStart;
 
     @FXML
     public void initialize() {
-
         podgladPliku.textProperty().addListener(fileListener);
         cbMode.valueProperty().addListener(modeListener);
         cbMode.setValue(NAPISE);
@@ -101,6 +116,17 @@ public class StartController {
         crypter = new Crypter();
     }
 
+    public void pomoc(ActionEvent actionEvent) throws IOException {
+        Parent view = FXMLLoader.load(getClass().getResource("/Sceny/Help.fxml"));
+        Scene scene = new Scene(view);
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        scene.setFill(Color.TRANSPARENT);
+        window.show();
+
+        new SceneDrag(scene);
+    }
+    
     private void mapInputsToFiles() {
         inFile = new File(podgladPliku.getText());
         outFile = new File(podgladPliku1.getText());

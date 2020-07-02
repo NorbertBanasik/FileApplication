@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -53,8 +55,26 @@ public class MainViewController {
     private Label label;
 
     @FXML
+    private Label labelod;
+
+    @FXML
+    private ImageView imgs;
+
+    @FXML
+    private Button btnNewFileD;
+
+    @FXML
+    private HBox passw1;
+
+    @FXML
+    private HBox passw2;
+
+    @FXML
     public void initialize(){
         nowy.setVisible(false);
+        labelod.setVisible(false);
+        imgs.setVisible(false);
+        btnNewFileD.setVisible(false);
 
         switch (StartController.getWybor()){
             case DECRYPT:
@@ -64,21 +84,19 @@ public class MainViewController {
         }
     }
 
-    public void onActionClose(ActionEvent actionEvent) {
-        System.exit(0);
-    }
+
 
     private void showStatus(boolean success) {
         Platform.runLater(() -> {
             if (success) {
-//                komunikat2.setText("Plik został odszyfrowany.");
-//                komunikat2.setStyle("-fx-text-inner-color: green; -fx-background-color: transparent");
-//                pass1.setText(null);
-//                pass2.setText(null);
-//                button.setVisible(false);
-//                nowy.setVisible(true);
-//                pass1.setDisable(true);
-//                pass2.setDisable(true);
+                labelod.setVisible(true);
+                imgs.setVisible(true);
+                btnNewFileD.setVisible(true);
+                label.setVisible(false);
+                passw1.setVisible(false);
+                passw2.setVisible(false);
+                button.setVisible(false);
+                komunikat2.setVisible(false);
             }
             else {
                 komunikat2.setText("Podano złe hasło dostępu.");
@@ -88,9 +106,25 @@ public class MainViewController {
         });
     }
 
+    public void onActionNew(ActionEvent actionEvent) throws IOException {
+
+        Parent view = FXMLLoader.load(getClass().getResource("/Sceny/Start.fxml"));
+        Scene scene = new Scene(view);
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        scene.setFill(Color.TRANSPARENT);
+        window.show();
+
+        new SceneDrag(scene);
+    }
+
     public void onActionMinimize(ActionEvent actionEvent){
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         stage.setIconified(true);
+    }
+
+    public void onActionClose(ActionEvent actionEvent) {
+        System.exit(0);
     }
 
     private Task<Boolean> encryptTask() {
@@ -100,7 +134,8 @@ public class MainViewController {
             protected Boolean call() throws Exception {
                 boolean success;
 
-                StreamObject streams = StartController.getCrypter().encrypt(StartController.getInFile(), StartController.getOutFile(), StartController.getCrypter().keyGen(pass1.getText()));
+                StreamObject streams = StartController.getCrypter().encrypt(StartController.getInFile(),
+                        StartController.getOutFile(), StartController.getCrypter().keyGen(pass1.getText()));
 
                 try {
                     long rounds = streams.getSize() / 1024;
@@ -139,7 +174,8 @@ public class MainViewController {
             protected Boolean call() throws Exception {
                 boolean success;
 
-                StreamObject streams = StartController.getCrypter().decrypt(StartController.getInFile(), StartController.getOutFile(), StartController.getCrypter().keyGen(pass1.getText()));
+                StreamObject streams = StartController.getCrypter().decrypt(StartController.getInFile(),
+                        StartController.getOutFile(), StartController.getCrypter().keyGen(pass1.getText()));
                 try {
 
                     long rounds = (streams.getSize() / 1024) * 2;
@@ -222,18 +258,10 @@ public class MainViewController {
                         Task<Boolean> decTask = decryptTask();
                         workingThread = new Thread(decTask, "Working-Thread");
                         workingThread.start();
-                            Parent view1 = FXMLLoader.load(getClass().getResource("/Sceny/SuccessD.fxml"));
-                            Scene scene1 = new Scene(view1);
-                            Stage window1 = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-                            window1.setScene(scene1);
-                            scene1.setFill(Color.TRANSPARENT);
-                            window1.show();
-                            new SceneDrag(scene1);
                         break;
             }
-
-
         }
-
     }
+
+
 }}

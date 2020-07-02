@@ -24,9 +24,7 @@ public class Main extends Application {
         stage.setTitle("Ochrona plików");
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
-
         new SceneDrag(scene);
-
     }
 
     public static void main(String[] args) {
